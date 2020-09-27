@@ -26,17 +26,17 @@ INCLUDES	:=
 # options for code generation
 #---------------------------------------------------------------------------------
 
-CFLAGS	= -D_WII_ -DNOOPENGL -g -O3 -Wall $(MACHDEP) $(INCLUDE)
-CXXFLAGS	=	$(CFLAGS)
+CFLAGS	= -D_WII_ -DNOOPENGL -g -O3 -Wall $(MACHDEP) $(INCLUDE) `$(PREFIX)pkg-config --cflags sdl`
+CXXFLAGS	=	$(CFLAGS) -std=c++03
 
 LDFLAGS	=	-g $(MACHDEP) -Wl,-Map,$(notdir $@).map
 
 #---------------------------------------------------------------------------------
 # any extra libraries we wish to link with the project
 #---------------------------------------------------------------------------------
-LIBS	:=	 -ldopmii -lSDL_net -lSDL_ttf -lSDL_gfx -lSDL_mixer -lSDL_image -lsmpeg \
-                -lSDL -ljpeg -lpng -lfreetype -lvorbisidec \
-                -lz -lfat -lwiiuse -lbte -logc -lm -lwiikeyboard
+LIBS	:=	`$(PREFIX)pkg-config --libs sdl SDL_mixer` -lSDL_image  \
+                 -ljpeg -lpng -lfreetype -lvorbisidec -logg\
+                -lz -lfat -lwiiuse -lbte -logc -lm -lwiikeyboard -lmad
 
  
 #--------------------------------------------------------------------------------
