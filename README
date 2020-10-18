@@ -1,3 +1,8 @@
+This is a copy of the original Google Code repository (https://code.google.com/archive/p/supertux-wii/).
+The original would not work for me when run off a USB drive attached to a hub.  It turns out that
+adding a little delay on startup was all that was necessary to get it to work.
+I also made a few minor changes to make it easier to compile with the current version of devkitPro
+and associated libraries.
 
 - An introduction for SuperTux -
 http://super-tux.sf.net/
